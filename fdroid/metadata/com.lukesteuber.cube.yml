@@ -1,0 +1,31 @@
+Categories:
+  - Puzzle Game
+License: MIT
+AuthorName: Luke Steuber
+AuthorWebSite: https://lukesteuber.com/
+WebSite: https://dr.eamer.dev/downloads/apps/cuuuube/
+SourceCode: https://github.com/lukeslp/cuuuube-android
+IssueTracker: https://github.com/lukeslp/cuuuube-android/issues
+
+AutoName: Cube
+
+RepoType: git
+Repo: https://github.com/lukeslp/cuuuube-android.git
+Binaries: https://github.com/lukeslp/cuuuube-android/releases/download/v%v/cuuuube-%v.apk
+
+Builds:
+  - versionName: 1.0.6
+    versionCode: 6
+    commit: EXPORT_COMMIT
+    subdir: android/app
+    gradle:
+      - yes
+
+AllowedAPKSigningKeys: dd8274b9096de5ef65590b2e5581226772737028753313a806c9e4de899f6126
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags ^v[0-9.]+$
+UpdateCheckData: 
+  android/version.properties|VERSION_CODE=(\d+)|android/version.properties|VERSION_NAME=(.+)
+CurrentVersion: 1.0.6
+CurrentVersionCode: 6

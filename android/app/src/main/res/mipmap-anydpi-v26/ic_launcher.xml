@@ -1,0 +1,13 @@
+<!--
+  File Purpose: Composes Cube's adaptive launcher icon for all supported Android versions.
+  Primary Components: Deep game background, vivid sticker foreground, monochrome glyph.
+  Inputs/Outputs: Used by launchers through AndroidManifest icon metadata.
+-->
+<adaptive-icon
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ObsoleteSdkInt">
+    <background android:drawable="@color/cube_icon_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_monochrome" />
+</adaptive-icon>

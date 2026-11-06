@@ -1,0 +1,24 @@
+<!--
+  File Purpose: Adaptive-icon foreground approximating the studio cube mark.
+  Primary Components: Offset dark board with vivid rounded-ish sticker blocks.
+  Inputs/Outputs: Cropped by the launcher mask; pairs with #F2F2F2 background.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Offset down-right so adaptive mask clips like the iOS icon. -->
+    <path
+        android:fillColor="#111111"
+        android:pathData="M32,40h78v78h-78z" />
+    <path android:fillColor="#FFD800" android:pathData="M38,46h18v18h-18z" />
+    <path android:fillColor="#42D4F4" android:pathData="M60,46h18v18h-18z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M82,46h18v18h-18z" />
+    <path android:fillColor="#FF0000" android:pathData="M38,68h18v18h-18z" />
+    <path android:fillColor="#FF2D95" android:pathData="M60,68h18v18h-18z" />
+    <path android:fillColor="#0066CC" android:pathData="M82,68h18v18h-18z" />
+    <path android:fillColor="#FF2D95" android:pathData="M38,90h18v18h-18z" />
+    <path android:fillColor="#FFD800" android:pathData="M60,90h18v18h-18z" />
+    <path android:fillColor="#42D4F4" android:pathData="M82,90h18v18h-18z" />
+</vector>

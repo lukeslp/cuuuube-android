@@ -1,0 +1,8 @@
+# Extends the default rules with one narrow exception.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "CUUUUBE's public APK signer certificate SHA-256, printed in every signed APK and in F-Droid indexes"
+regexTarget = "line"
+regexes = ['''AllowedAPKSigningKeys: dd8274b9096de5ef65590b2e5581226772737028753313a806c9e4de899f6126''']

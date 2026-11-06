@@ -1,0 +1,15 @@
+CUUUUBE is a 3D twisty cube puzzle. Drag across the cube to turn a layer, or drag beside it to turn the whole cube. The timer starts on your first turn.
+
+The game starts on a 2×2. Solve it and a scrambled 3×3 replaces it, then a 4×4, then a 5×5. Solving the 5×5 ends the run, and any time from the run that makes the top 10 for its size goes on the scoreboard under your initials. The size buttons skip straight to any cube if you would rather not climb.
+
+The app is the bundled game inside an Android WebView. It requests no permissions, including network access, and the game view blocks network loads. Times, scores and your theme stay on the device and are left out of Android backups. There are no ads and no analytics. The home button links to the author's website, which opens in your browser.
+
+* 2×2, 3×3, 4×4 and 5×5 cubes
+* A scramble button for a fresh shuffle at the current size
+* Five color themes, cycled with one button
+* A top-10 scoreboard for each size, kept on the device
+* Confetti on a solve, and a screen-edge glow that brightens as faces are completed
+* A timer that sometimes comments on your moves
+* Requires a touchscreen
+
+Based on Boris Šehovac's Three.js Rubik's cube (CodePen EMyWVv, MIT). Uses Three.js r95 (MIT), the Bungee and Space Grotesk typefaces (SIL OFL 1.1) and Feather icons (MIT). Full license texts for these and the other bundled components ship inside the app.

@@ -1,0 +1,27 @@
+Kotlin stdlib 2.2.21 and JetBrains annotations 13.0
+
+Kotlin sources credit JetBrains s.r.o. and Kotlin Programming Language
+contributors. The principal license is Apache 2.0, included in Apache-2.0.txt.
+The reviewed Instant source credits 2010-2024; the reviewed JVM math source
+credits 2010-2022. Preserve the complete headers when redistributing sources.
+
+The exact-tag Kotlin license inventory identifies these derived portions:
+
+- Collections: derived from GWT, Copyright (C) 2007-08 Google Inc.; Apache 2.0.
+- JVM unsigned operations: derived from Guava's UnsignedLongs,
+  Copyright 2011 The Guava Authors; Apache 2.0.
+- Kotlin time: based on ThreeTenBP, Copyright (c) 2007-present,
+  Stephen Colebourne & Michael Nascimento Santos; the complete BSD-3-Clause
+  text is included in Kotlin-ThreeTenBP-BSD-3-Clause.txt.
+- JVM math: derived from Boost special math functions,
+  Copyright Eric Ford & Hubert Holin 2001; the complete Boost text is
+  included in Kotlin-Boost-1.0.txt, including its machine-object-code exception.
+
+The reviewed annotations 13.0 NotNull.java header credits
+Copyright 2000-2012 JetBrains s.r.o.; Apache 2.0. Other source headers remain
+in the official source archive recorded by the component inventory.
+
+Sources and exact artifact hashes are recorded in
+docs/FDROID_RUNTIME_COMPONENTS.json. Kotlin's separately supplied Compiler
+NOTICE names the compiler distribution; it is not labeled a stdlib NOTICE here.
+This attribution summary is not a replacement for the included license texts.

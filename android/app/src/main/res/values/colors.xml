@@ -1,0 +1,9 @@
+<!--
+  File Purpose: Defines stable shell and launcher colors used before the web game paints.
+  Primary Components: Dark game background and accessible cyan launcher foreground.
+  Inputs/Outputs: Compiled into theme and adaptive-icon color resources.
+-->
+<resources>
+    <color name="cube_background">#01030A</color>
+    <color name="cube_icon_background">#F2F2F2</color>
+</resources>

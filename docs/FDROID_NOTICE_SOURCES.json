@@ -1,0 +1,68 @@
+[
+  {
+    "file": "web/licenses/Three-r95-MIT.txt",
+    "source": "https://raw.githubusercontent.com/mrdoob/three.js/r95/LICENSE",
+    "sha256": "551f06ddc3dc36b56610aa23db680826ba9d9a02e8f89f7bec05d7fa27401a2b"
+  },
+  {
+    "file": "web/licenses/Bungee-OFL-1.1.txt",
+    "source": "https://raw.githubusercontent.com/djrrb/Bungee/ab383d4db94c89dada5ed48b4322c5f375833579/LICENSE.txt",
+    "sha256": "6bc29935a8be24bfc96d2813fd5414769c81a2794a109e50c3197f2d0895271c"
+  },
+  {
+    "file": "web/licenses/Feather-MIT.txt",
+    "source": "https://raw.githubusercontent.com/feathericons/feather/main/LICENSE",
+    "sha256": "308028e93fcf84972523cdf6e616f73168546b4953895f516d01287f16fe7bee"
+  },
+  {
+    "file": "web/licenses/The-Cube-2025-MIT.txt",
+    "source": "LICENSE.txt in source commit 85a403a",
+    "scope": "Preserved supplied historical notice",
+    "sha256": "739ec29ec44856f826591f751a8a1f07c94c904576276907d81fbf920f8f55b9"
+  },
+  {
+    "file": "web/licenses/The-Cube-CodePen-2026-MIT.txt",
+    "source": "https://codepen.io/bsehovac/details/EMyWVv",
+    "scope": "Explicit MIT grant visible November 5, 2026; current copyright year retained separately",
+    "sha256": "4c5916d3c7d18bebad6378dcd46a7e3f7778b3a9d06b576a0fc03862f47043f9"
+  },
+  {
+    "file": "web/licenses/Three-Rounded-Box-MIT.txt",
+    "source": "https://github.com/pailhead/three-rounded-box/tree/dbb59c5491d2efb5b1a84c3e2dab0ed311f2d626",
+    "scope": "Package declares MIT; supplied standard MIT text and actual credits, no invented copyright year",
+    "sha256": "40e4cf9a8f781f594bd3e5e9903ded6145ae50652381c7bf561c0359312e8e58"
+  },
+  {
+    "file": "web/licenses/Apache-2.0.txt",
+    "source": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/LICENSE.txt",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "file": "web/licenses/Kotlin-ThreeTenBP-BSD-3-Clause.txt",
+    "source": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/third_party/threetenbp_license.txt",
+    "sha256": "d1bc53b493a3ab387b42717ed5c4b1976a5048996f81154278100bff86d39331"
+  },
+  {
+    "file": "web/licenses/Kotlin-Boost-1.0.txt",
+    "source": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/third_party/boost_LICENSE.txt",
+    "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b"
+  },
+  {
+    "file": "web/licenses/Kotlin-and-Annotations-Credits.txt",
+    "source": "Versioned sources and exact-tag license inventory in docs/FDROID_RUNTIME_COMPONENTS.json",
+    "scope": "Scoped attribution summary; not an upstream grant or a complete R8 attribution claim",
+    "sha256": "b6214b0706cfe73c7d6e6261613f0052de25fe84811fddd8d2a92581c6381857"
+  },
+  {
+    "file": "web/licenses/Space-Grotesk-OFL-1.1.txt",
+    "source": "https://raw.githubusercontent.com/floriankarsten/space-grotesk/7220f5d04813fe83babe76d4fd23e02275021280/OFL.txt",
+    "scope": "Space Grotesk 2.0.0 variable WOFF2 embedded in web/style.css; font provenance in third_party/space-grotesk-2.0.0/SOURCE.md",
+    "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+  },
+  {
+    "file": "web/licenses/CUUUUBE-2026-MIT.txt",
+    "source": "Luke Steuber's MIT grant for his own code and launcher artwork, approved 2026-11-06",
+    "scope": "First-party notice; the original game keeps its separate notices",
+    "sha256": "da3aa71f9e52d237563fdcb35504a61a6653365ecb9676b8c1de9636ef15fc06"
+  }
+]

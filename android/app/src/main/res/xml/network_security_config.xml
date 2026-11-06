@@ -1,0 +1,12 @@
+<!--
+  File Purpose: Denies cleartext traffic as defense in depth for the offline WebView shell.
+  Primary Components: Base network security policy.
+  Inputs/Outputs: Read by Android's networking stack; permits only system-trusted TLS if used externally.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

@@ -1,0 +1,46 @@
+<!--
+  File Purpose: Declares the offline Cube Android application and its sole activity.
+  Primary Components: Application security posture, launcher metadata, and MainActivity.
+  Inputs/Outputs: Consumed by Android packaging; intentionally requests no permissions.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Layers are dragged directly with a finger; there is no D-pad model.
+         Without this, the implied faketouch default lets leanback devices
+         install it: a signed build installed cleanly on a Fire TV
+         (AFTTI43, Fire OS 7).
+
+         Lint's UnnecessaryRequiredFeature warns that this narrows device
+         reach. That is the intent — narrowing it away from televisions is
+         the whole point, so the check is suppressed deliberately. -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="true"
+        tools:ignore="UnnecessaryRequiredFeature" />
+
+    <application
+        android:allowBackup="false"
+        android:appCategory="game"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Cube"
+        android:usesCleartextTraffic="false">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

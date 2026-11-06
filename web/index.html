@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>CUUUUBE</title>
+    <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,viewport-fit=cover">
+    <meta name="description" content="*taps cube*">
+    <!-- Fonts use the local system stack (Helvetica Neue / Inter fallbacks in style.css) for fully offline play. -->
+    <link rel="stylesheet" href="./style.css?v=elegance-5">
+  </head>
+    
+  <body>
+
+<div class="ui">
+
+  <div class="ui__background"></div>
+
+  <div class="ui__game"></div>
+
+  <div class="ui__texts">
+    <h1 class="text text--title">
+      <span>THE</span>
+      <span>CUBE</span>
+    </h1>
+    <div class="text text--note">
+      tap to begin
+    </div>
+    <div class="text text--timer">
+      0:00
+    </div>
+    <div class="text text--complete">
+      <span>Complete!</span>
+    </div>
+    <div class="text text--best-time">
+      <span>Best Time!</span>
+    </div>
+    <div class="text text--level">
+      <span class="level-indicator">2×2</span>
+    </div>
+    <div class="bottom-toolbar">
+      <button class="size-btn size-btn--restart" aria-label="Scramble">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Circular refresh arrow icon -->
+          <path d="M1 4v6h6"/>
+          <path d="M23 20v-6h-6"/>
+          <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+        </svg>
+      </button>
+      <button class="size-btn size-btn--palette" aria-label="Change color theme">
+        <svg viewBox="0 0 24 24" stroke-width="2">
+          <!-- Color theme: half-filled contrast circle -->
+          <circle cx="12" cy="12" r="9" fill="none"/>
+          <path d="M12 3a9 9 0 0 1 0 18z" stroke="none"/>
+        </svg>
+      </button>
+      <div class="toolbar-spacer"></div>
+      <button class="size-btn" data-size="2" aria-label="2×2 cube">
+        <svg viewBox="0 0 10 10"><rect x="0" y="0" width="4" height="4" rx="0.8"/><rect x="6" y="0" width="4" height="4" rx="0.8"/><rect x="0" y="6" width="4" height="4" rx="0.8"/><rect x="6" y="6" width="4" height="4" rx="0.8"/></svg>
+      </button>
+      <button class="size-btn" data-size="3" aria-label="3×3 cube">
+        <svg viewBox="0 0 14 14"><rect x="0" y="0" width="4" height="4" rx="0.7"/><rect x="5" y="0" width="4" height="4" rx="0.7"/><rect x="10" y="0" width="4" height="4" rx="0.7"/><rect x="0" y="5" width="4" height="4" rx="0.7"/><rect x="5" y="5" width="4" height="4" rx="0.7"/><rect x="10" y="5" width="4" height="4" rx="0.7"/><rect x="0" y="10" width="4" height="4" rx="0.7"/><rect x="5" y="10" width="4" height="4" rx="0.7"/><rect x="10" y="10" width="4" height="4" rx="0.7"/></svg>
+      </button>
+      <button class="size-btn" data-size="4" aria-label="4×4 cube">
+        <svg viewBox="0 0 19 19"><rect x="0" y="0" width="4" height="4" rx="0.6"/><rect x="5" y="0" width="4" height="4" rx="0.6"/><rect x="10" y="0" width="4" height="4" rx="0.6"/><rect x="15" y="0" width="4" height="4" rx="0.6"/><rect x="0" y="5" width="4" height="4" rx="0.6"/><rect x="5" y="5" width="4" height="4" rx="0.6"/><rect x="10" y="5" width="4" height="4" rx="0.6"/><rect x="15" y="5" width="4" height="4" rx="0.6"/><rect x="0" y="10" width="4" height="4" rx="0.6"/><rect x="5" y="10" width="4" height="4" rx="0.6"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><rect x="15" y="10" width="4" height="4" rx="0.6"/><rect x="0" y="15" width="4" height="4" rx="0.6"/><rect x="5" y="15" width="4" height="4" rx="0.6"/><rect x="10" y="15" width="4" height="4" rx="0.6"/><rect x="15" y="15" width="4" height="4" rx="0.6"/></svg>
+      </button>
+      <button class="size-btn" data-size="5" aria-label="5×5 cube">
+        <svg viewBox="0 0 24 24"><rect x="0" y="0" width="4" height="4" rx="0.5"/><rect x="5" y="0" width="4" height="4" rx="0.5"/><rect x="10" y="0" width="4" height="4" rx="0.5"/><rect x="15" y="0" width="4" height="4" rx="0.5"/><rect x="20" y="0" width="4" height="4" rx="0.5"/><rect x="0" y="5" width="4" height="4" rx="0.5"/><rect x="5" y="5" width="4" height="4" rx="0.5"/><rect x="10" y="5" width="4" height="4" rx="0.5"/><rect x="15" y="5" width="4" height="4" rx="0.5"/><rect x="20" y="5" width="4" height="4" rx="0.5"/><rect x="0" y="10" width="4" height="4" rx="0.5"/><rect x="5" y="10" width="4" height="4" rx="0.5"/><rect x="10" y="10" width="4" height="4" rx="0.5"/><rect x="15" y="10" width="4" height="4" rx="0.5"/><rect x="20" y="10" width="4" height="4" rx="0.5"/><rect x="0" y="15" width="4" height="4" rx="0.5"/><rect x="5" y="15" width="4" height="4" rx="0.5"/><rect x="10" y="15" width="4" height="4" rx="0.5"/><rect x="15" y="15" width="4" height="4" rx="0.5"/><rect x="20" y="15" width="4" height="4" rx="0.5"/><rect x="0" y="20" width="4" height="4" rx="0.5"/><rect x="5" y="20" width="4" height="4" rx="0.5"/><rect x="10" y="20" width="4" height="4" rx="0.5"/><rect x="15" y="20" width="4" height="4" rx="0.5"/><rect x="20" y="20" width="4" height="4" rx="0.5"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="ui__prefs" style="display:none !important;">
+    <range name="size" title="Cube Size" list="2,3,4,5"></range>
+    <range name="flip" title="Flip Type" list="Swift&nbsp;,Smooth,Bounce"></range>
+    <range name="scramble" title="Scramble Length" list="20,25,30"></range>
+    <range name="fov" title="Camera Angle" list="Ortographic,Perspective"></range>
+    <range name="theme" title="Color Scheme" list="Cube,Erno,Dust,Camo,Rain"></range>
+  </div>
+
+
+  <div class="ui__stats" role="dialog" aria-label="Best times scoreboard" aria-hidden="true">
+    <div class="scoreboard">
+      <div class="scoreboard-title">Best Times</div>
+      <div class="scoreboard-boards"></div>
+      <button class="scoreboard-close" type="button">Close</button>
+    </div>
+  </div>
+
+  <div class="ui__initials" aria-hidden="true">
+    <div class="initials-card" role="dialog" aria-modal="true" aria-labelledby="initials-title">
+      <div class="initials-title" id="initials-title">New best time!</div>
+      <div class="initials-sub"></div>
+      <form class="initials-form" autocomplete="off">
+        <input class="initials-input" type="text" maxlength="12" inputmode="text"
+               aria-label="Your name or initials" placeholder="Your initials" />
+        <button class="initials-save" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="ui__buttons">
+    <a href="https://lukesteuber.com" class="btn btn--tl btn--home" aria-label="Home">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    </a>
+    <button class="btn btn--tr btn--stats" aria-label="View statistics">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="12" width="4" height="9"/>
+        <rect x="10" y="8" width="4" height="13"/>
+        <rect x="17" y="4" width="4" height="17"/>
+      </svg>
+    </button>
+  </div>
+
+</div>
+
+<script src="./vendor/three.min.js"></script>
+<script src="./script.js?v=14"></script>
+  </body>
+  
+</html>

@@ -1,0 +1,1 @@
+Full license notices for the game and its bundled components now ship inside the app. The Space Grotesk typeface (SIL OFL 1.1) is now bundled, so the game shows its intended lettering offline instead of a system fallback font. The release build now leaves out version-control and dependency metadata, for F-Droid's reproducible-build route. No gameplay changes.

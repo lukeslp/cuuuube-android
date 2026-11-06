@@ -1,0 +1,134 @@
+{
+  "observed_at": "2026-11-06T03:33:16.268907+00:00",
+  "scope": "Two external coordinates in the existing releaseRuntimeClasspath report, verified against official Maven binaries and sources. Not a complete build-tool dependency audit or source-to-R8 attribution proof.",
+  "components": [
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-stdlib:2.2.21",
+      "artifact": {
+        "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.2.21/kotlin-stdlib-2.2.21.jar",
+        "file": "kotlin-stdlib-2.2.21.jar",
+        "sha256": "6558a3d233da56a20934b32159f9db5f86ed5816ef098f78a2c223dc6abb79dd",
+        "bytes": 1761445
+      },
+      "cached_binary_matches_official": true,
+      "pom": {
+        "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.2.21/kotlin-stdlib-2.2.21.pom",
+        "file": "kotlin-stdlib-2.2.21.pom",
+        "sha256": "cf31f923196c63aedecd0a57c24269bd3702a4e47c0bf0bd64b5ada5de522272",
+        "bytes": 2301
+      },
+      "source_archive": {
+        "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.2.21/kotlin-stdlib-2.2.21-sources.jar",
+        "file": "kotlin-stdlib-2.2.21-sources.jar",
+        "sha256": "664f515359444a92267a13266101431a630f99d6b8d04407a92b1a0e558d33ee",
+        "bytes": 712993
+      },
+      "declared_pom_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embedded_license_entries": [],
+      "source_headers_reviewed": [
+        "commonMain/kotlin/time/Instant.kt",
+        "jvmMain/kotlin/util/UnsignedJVM.kt",
+        "jvmMain/kotlin/util/MathJVM.kt"
+      ],
+      "source_header_license": "Apache-2.0; additional stdlib portions recorded separately"
+    },
+    {
+      "coordinate": "org.jetbrains:annotations:13.0",
+      "artifact": {
+        "url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0.jar",
+        "file": "annotations-13.0.jar",
+        "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478",
+        "bytes": 17536
+      },
+      "cached_binary_matches_official": true,
+      "pom": {
+        "url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0.pom",
+        "file": "annotations-13.0.pom",
+        "sha256": "965aeb2bedff369819bdde1bf7a0b3b89b8247dd69c88b86375d76163bb8c397",
+        "bytes": 4930
+      },
+      "source_archive": {
+        "url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0-sources.jar",
+        "file": "annotations-13.0-sources.jar",
+        "sha256": "42a5e144b8e81d50d6913d1007b695e62e614705268d8cf9f13dbdc478c2c68e",
+        "bytes": 17566
+      },
+      "declared_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "embedded_license_entries": [],
+      "source_headers_reviewed": [
+        "org/jetbrains/annotations/NotNull.java"
+      ],
+      "source_header_license": "Apache-2.0; copyright 2000-2012 JetBrains s.r.o. in reviewed file"
+    }
+  ],
+  "kotlin_additional_license_inventory": {
+    "url": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/README.md",
+    "file": "kotlin-README.md",
+    "sha256": "840537e4de746f51866d71b2b0aa264d8c061e4654b4c7e217cea7f4e80be1cb",
+    "bytes": 17643
+  },
+  "compiler_notice": {
+    "source": {
+      "url": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/NOTICE.txt",
+      "file": "kotlin-NOTICE.txt",
+      "sha256": "0b09a83d3ef7795c7dec65e815866597c066c53898f2852a76599b8f5552941a",
+      "bytes": 482
+    },
+    "scope": "Explicitly names Kotlin Compiler; not asserted as a stdlib runtime NOTICE."
+  },
+  "derived_stdlib_material": [
+    {
+      "scope": "kotlin.time including Instant, ThreeTenBP-derived",
+      "license": "BSD-3-Clause",
+      "source": {
+        "url": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/third_party/threetenbp_license.txt",
+        "file": "kotlin-third_party-threetenbp_license.txt",
+        "sha256": "d1bc53b493a3ab387b42717ed5c4b1976a5048996f81154278100bff86d39331",
+        "bytes": 1520
+      }
+    },
+    {
+      "scope": "JVM MathJVM.kt, Boost-derived functions",
+      "license": "BSL-1.0",
+      "source": {
+        "url": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/third_party/boost_LICENSE.txt",
+        "file": "kotlin-third_party-boost_LICENSE.txt",
+        "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+        "bytes": 1337
+      },
+      "binary_condition": "Machine-object-code exception exists; retained voluntarily with bundle and required source material."
+    },
+    {
+      "scope": "Collections GWT-derived and JVM unsigned Guava-derived portions",
+      "license": "Apache-2.0",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/third_party/gwt_license.txt",
+          "file": "kotlin-third_party-gwt_license.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        },
+        {
+          "url": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.2.21/license/third_party/guava_license.txt",
+          "file": "kotlin-third_party-guava_license.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Code-5 DEX defined-name output has no Kotlin or org.jetbrains.annotations namespace. R8 renaming/inlining prevents treating that as proof of absence.",
+    "No new APK, source publication, signer change or version assignment. Preferred Three.js source/build inputs and launcher-art rights remain separate gates."
+  ]
+}

@@ -1,0 +1,1 @@
+A 3D cube puzzle from 2×2 to 5×5 with a solve timer. Plays offline
