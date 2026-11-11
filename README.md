@@ -1,5 +1,6 @@
 # CUUUUBE for Android
 
+[![Web](https://img.shields.io/badge/web-play_in_the_browser-4ad7d1?style=flat-square)](https://dr.eamer.dev/games/cube/)
 [![App Store](https://img.shields.io/badge/App_Store-iPhone_and_iPad-blue?style=flat-square)](https://apps.apple.com/us/app/cuuuube/id6780109662)
 [![Android download](https://img.shields.io/badge/Android-direct_download-34A853?style=flat-square)](https://dr.eamer.dev/downloads/apps/cuuuube/)
 [![F-Droid repository](https://img.shields.io/badge/F--Droid-LocalType_releases_repo-1976D2?style=flat-square)](https://dr.eamer.dev/downloads/fdroid/)
