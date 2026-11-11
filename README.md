@@ -1,5 +1,10 @@
 # CUUUUBE for Android
 
+[![App Store](https://img.shields.io/badge/App_Store-iPhone_and_iPad-blue?style=flat-square)](https://apps.apple.com/us/app/cuuuube/id6780109662)
+[![Android download](https://img.shields.io/badge/Android-direct_download-34A853?style=flat-square)](https://dr.eamer.dev/downloads/apps/cuuuube/)
+[![F-Droid repository](https://img.shields.io/badge/F--Droid-LocalType_releases_repo-1976D2?style=flat-square)](https://dr.eamer.dev/downloads/fdroid/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE.txt)
+
 A 3D cube puzzle, from 2×2 to 5×5, with a solve timer and a top-10 scoreboard
 for each size. The game is plain HTML, CSS and JavaScript in `web/`, running in
 a locked-down Android WebView. It requests no permissions, blocks network loads
