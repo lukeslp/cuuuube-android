@@ -72,6 +72,36 @@ class CanonicalWebAssetsTest {
     }
 
     @Test
+    fun gameCallsItselfCuuuube() {
+        val html = webDirectory.resolve("index.html").readText()
+
+        assertTrue(html.contains("<title>CUUUUBE</title>"))
+        val heading = Regex("""<h1 class="text text--title">(.*?)</h1>""", RegexOption.DOT_MATCHES_ALL)
+            .find(html)!!.groupValues[1]
+        assertTrue("The title screen must say CUUUUBE", heading.contains("<span>CUUUUBE</span>"))
+        assertFalse("The title screen must not say CUBE alone", heading.contains("<span>CUBE</span>"))
+    }
+
+    @Test
+    fun licensesPageCarriesEveryBundledNoticeInFull() {
+        val licenses = webDirectory.resolve("licenses")
+        val page = licenses.resolve("index.html").readText()
+        val notices = licenses.listFiles { file -> file.extension == "txt" }!!.sortedBy { it.name }
+
+        assertEquals(12, notices.size)
+        notices.forEach { notice ->
+            val escaped = notice.readText()
+                .replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            assertTrue("${notice.name} must appear in full on the licenses page", page.contains("<pre>$escaped</pre>"))
+        }
+        assertFalse("The licenses page must not link anywhere", page.contains("href=") || page.contains("src="))
+
+        val html = webDirectory.resolve("index.html").readText()
+        assertTrue("The scoreboard must offer the licenses page", html.contains("scoreboard-licenses"))
+        assertTrue(webDirectory.resolve("script.js").readText().contains("./licenses/index.html"))
+    }
+
+    @Test
     fun gameKeepsItsPersistentStorageContract() {
         val script = webDirectory.resolve("script.js").readText()
 

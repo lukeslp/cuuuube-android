@@ -4342,6 +4342,8 @@ class Game {
       },
       scoreboardClose: document.querySelector( '.scoreboard-close' ),
       scoreboardBoards: document.querySelector( '.scoreboard-boards' ),
+      scoreboardLicenses: document.querySelector( '.scoreboard-licenses' ),
+      licenses: document.querySelector( '.ui__licenses' ),
       initials: document.querySelector( '.ui__initials' ),
       sizePicker: document.querySelectorAll( '.size-btn' ),
     };
@@ -4517,6 +4519,30 @@ class Game {
 
     if ( this.dom.scoreboardClose ) {
       this.dom.scoreboardClose.onclick = event => this.stats( HIDE );
+    }
+
+    // License notices: the bundled page is put in a frame only while it is
+    // open, so opening and closing it never adds a history entry and the game
+    // underneath keeps its state.
+    if ( this.dom.scoreboardLicenses && this.dom.licenses ) {
+      const overlay = this.dom.licenses;
+      const host = overlay.querySelector( '.licenses-page' );
+      const close = overlay.querySelector( '.licenses-close' );
+      this.dom.scoreboardLicenses.onclick = event => {
+        const frame = document.createElement( 'iframe' );
+        frame.title = 'License notices';
+        frame.src = './licenses/index.html';
+        host.replaceChildren( frame );
+        overlay.classList.add( 'is-open' );
+        overlay.setAttribute( 'aria-hidden', 'false' );
+        close.focus();
+      };
+      close.onclick = event => {
+        overlay.classList.remove( 'is-open' );
+        overlay.setAttribute( 'aria-hidden', 'true' );
+        host.replaceChildren();
+        this.dom.scoreboardLicenses.focus();
+      };
     }
 
     // Size picker buttons - skip to any cube size
