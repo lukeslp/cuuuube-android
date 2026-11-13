@@ -2860,6 +2860,9 @@ class Transition {
 
     const note = this.game.dom.texts.note;
 
+    // "Tap to begin" is only true, and only visible, while the title is up.
+    note.setAttribute( 'aria-hidden', show ? 'false' : 'true' );
+
     this.tweens.title[ letters.length ] = new Tween( {
       target: note.style,
       easing: Easing.Sine.InOut(),

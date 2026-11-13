@@ -481,7 +481,8 @@ body::before {
 }
 .text--title {
   bottom: 75%;
-  font-size: 4.4em;
+  /* Seven letters: capped by width so the name is never cut at the edges. */
+  font-size: min(4.4em, 18.5vw);
   height: 1.2em;
 }
 .text--title span {
