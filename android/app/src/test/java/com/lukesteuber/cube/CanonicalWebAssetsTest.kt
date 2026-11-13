@@ -76,7 +76,7 @@ class CanonicalWebAssetsTest {
         val html = webDirectory.resolve("index.html").readText()
 
         assertTrue(html.contains("<title>CUUUUBE</title>"))
-        val heading = Regex("""<h1 class="text text--title">(.*?)</h1>""", RegexOption.DOT_MATCHES_ALL)
+        val heading = Regex("""<h1 class="text text--title"[^>]*>(.*?)</h1>""", RegexOption.DOT_MATCHES_ALL)
             .find(html)!!.groupValues[1]
         assertTrue("The title screen must say CUUUUBE", heading.contains("<span>CUUUUBE</span>"))
         assertFalse("The title screen must not say CUBE alone", heading.contains("<span>CUBE</span>"))
@@ -99,6 +99,31 @@ class CanonicalWebAssetsTest {
         val html = webDirectory.resolve("index.html").readText()
         assertTrue("The scoreboard must offer the licenses page", html.contains("scoreboard-licenses"))
         assertTrue(webDirectory.resolve("script.js").readText().contains("./licenses/index.html"))
+    }
+
+    @Test
+    fun backClosesTheOpenPageBeforeLeaving() {
+        val script = webDirectory.resolve("script.js").readText()
+        val activity = File("src/main/java/com/lukesteuber/cube/MainActivity.kt").readText()
+
+        assertTrue("The game must answer the Back button", script.contains("Game.prototype.handleBack = function()"))
+        assertTrue("window.game must exist for the shell to ask", script.contains("window.game = new Game()"))
+        assertTrue("The shell must ask the game before leaving", activity.contains("window.game.handleBack()"))
+    }
+
+    @Test
+    fun screenReaderHasNamesAndAStatusLine() {
+        val html = webDirectory.resolve("index.html").readText()
+
+        assertTrue(html.contains("role=\"status\" aria-live=\"polite\""))
+        assertTrue(html.contains("class=\"text text--timer\" role=\"timer\""))
+        Regex("<button[^>]*>").findAll(html).forEach { button ->
+            val tag = button.value
+            assertTrue(
+                "Every icon-only button needs a name: $tag",
+                tag.contains("aria-label=") || tag.contains("type=\"submit\"") || tag.contains("scoreboard-"),
+            )
+        }
     }
 
     @Test

@@ -2677,13 +2677,17 @@ class Transition {
     if ( show ) this.game.renderScoreboard();
 
     this.activeTransitions++;
+    this.game.boardOpen = show;
 
     const panel = this.game.dom.stats;
     if ( show ) {
       panel.classList.add( 'is-open' );
       panel.setAttribute( 'aria-hidden', 'false' );
       panel.style.pointerEvents = 'all';
+      panel.inert = false;
       this.game.dom.ui.classList.add( 'board-open' );
+      this.game.setBehindBoard( true );
+      if ( this.game.dom.scoreboardClose ) this.game.dom.scoreboardClose.focus();
     }
 
     try { this.tweens.statsPanel.stop(); } catch ( e ) {}
@@ -2702,7 +2706,10 @@ class Transition {
           panel.classList.remove( 'is-open' );
           panel.setAttribute( 'aria-hidden', 'true' );
           panel.style.pointerEvents = 'none';
+          panel.inert = true;
           this.game.dom.ui.classList.remove( 'board-open' );
+          this.game.setBehindBoard( false );
+          this.game.dom.buttons.stats.focus();
         }
 
       },
@@ -2897,6 +2904,7 @@ class Transition {
       const i = document.createElement( 'i' );
 
       i.innerHTML = letter;
+      i.setAttribute( 'aria-hidden', 'true' );
 
       element.appendChild( i );
 
@@ -3039,14 +3047,24 @@ class Timer extends Animation {
 
   setText() {
 
-    this.game.dom.texts.timer.innerHTML = this.converted;
+    this.show( this.converted );
+
+  }
+
+  // Everything the timer line shows goes through here, so a screen reader
+  // gets the same words as one label instead of letter by letter.
+  show( text ) {
+
+    const timer = this.game.dom.texts.timer;
+    timer.innerHTML = text;
+    timer.setAttribute( 'aria-label', text );
 
   }
   
   // Show a fun message temporarily instead of time
   showMessage( message, duration = 1500 ) {
     this.showingMessage = true;
-    this.game.dom.texts.timer.innerHTML = message;
+    this.show( message );
     
     setTimeout( () => {
       this.showingMessage = false;
@@ -3063,12 +3081,12 @@ class Timer extends Animation {
     this.idleMessageIndex = ( this.idleMessageIndex + 1 ) % this.idleMessages.length;
     
     this.showingMessage = true;
-    this.game.dom.texts.timer.innerHTML = message;
+    this.show( message );
     
     setTimeout( () => {
       this.showingMessage = false;
       if ( this.game.newGame ) {
-        this.game.dom.texts.timer.innerHTML = '0:00';
+        this.show( '0:00' );
       }
     }, 2500 );
   }
@@ -4020,6 +4038,7 @@ class Themes {
     
     this.currentThemeIndex = ( this.currentThemeIndex + 1 ) % this.themeList.length;
     this.setTheme( this.themeList[ this.currentThemeIndex ], true );
+    this.game.announce( `Color theme ${ this.currentThemeIndex + 1 } of ${ this.themeList.length }` );
     notifyNativePositiveMoment( 'theme' );
     
   }
@@ -4535,12 +4554,16 @@ class Game {
         host.replaceChildren( frame );
         overlay.classList.add( 'is-open' );
         overlay.setAttribute( 'aria-hidden', 'false' );
+        overlay.inert = false;
+        this.dom.stats.inert = true;
         close.focus();
       };
       close.onclick = event => {
         overlay.classList.remove( 'is-open' );
         overlay.setAttribute( 'aria-hidden', 'true' );
         host.replaceChildren();
+        overlay.inert = true;
+        this.dom.stats.inert = false;
         this.dom.scoreboardLicenses.focus();
       };
     }
@@ -4800,6 +4823,9 @@ class Game {
 
     } else {
 
+      // Already closing (a second tap on Close, or Back during the fade).
+      if ( ! this.boardOpen ) return;
+
       this.transition.stats( HIDE );
 
       // A plain view just closes; the game underneath is untouched.
@@ -4833,6 +4859,7 @@ class Game {
         // Record this level's solve time for the run (the scoreboard reads it).
         this.runTimes = this.runTimes || {};
         this.runTimes[ currentSize ] = this.timer.deltaTime;
+        this.announce( `${ currentSize } by ${ currentSize } solved in ${ this.timer.converted }. Next, ${ currentSize + 1 } by ${ currentSize + 1 }.` );
 
         // Brief celebration
         this.confetti.start();
@@ -4883,6 +4910,7 @@ class Game {
       this.runTimes = this.runTimes || {};
       this.runTimes[ 5 ] = this.timer.deltaTime;
       this.pendingQualifiers = this.evaluateRunQualifiers();
+      this.announce( `5 by 5 solved in ${ this.timer.converted }. Run complete${ this.bestTime ? ', with a new best time' : '' }. Tap to continue.` );
 
       this.transition.zoom( STATE.Menu, 0 );
       this.transition.elevate( SHOW );
@@ -4945,6 +4973,41 @@ Game.prototype.updateLevelIndicator = function() {
   this.updateSizePickerActive();
 };
 
+// Say something to a screen reader without showing it.
+Game.prototype.announce = function( text ) {
+  const status = document.querySelector( '.sr-status' );
+  if ( ! status ) return;
+  status.textContent = '';
+  setTimeout( () => { status.textContent = text; }, 50 );
+};
+
+// While the Best Times board is open, nothing behind it can be reached.
+Game.prototype.setBehindBoard = function( behind ) {
+  [ this.dom.game, this.dom.texts.title.parentNode, this.dom.buttons.stats.parentNode ].forEach( layer => {
+    if ( layer ) layer.inert = behind;
+  } );
+};
+
+// The Android Back button asks this first. It closes the page on top and
+// answers true; when nothing is open it answers false and the app leaves.
+Game.prototype.handleBack = function() {
+  const licenses = this.dom.licenses;
+  if ( licenses && licenses.classList.contains( 'is-open' ) ) {
+    licenses.querySelector( '.licenses-close' ).click();
+    return true;
+  }
+  // A new best time is waiting for a name: keep the time, under the name as typed.
+  if ( this.dom.initials && this.dom.initials.classList.contains( 'is-open' ) ) {
+    this.dom.initials.querySelector( '.initials-form' ).requestSubmit();
+    return true;
+  }
+  if ( this.boardOpen ) {
+    this.stats( HIDE );
+    return true;
+  }
+  return false;
+};
+
 // Add updateSizePickerActive method to Game prototype
 Game.prototype.updateSizePickerActive = function() {
   if ( this.dom.sizePicker ) {
@@ -4955,6 +5018,7 @@ Game.prototype.updateSizePickerActive = function() {
       } else {
         btn.classList.remove( 'active' );
       }
+      if ( ! isNaN( size ) ) btn.setAttribute( 'aria-pressed', size === this.cube.size ? 'true' : 'false' );
     });
   }
 };
@@ -5054,6 +5118,7 @@ Game.prototype.doScramble = function( onComplete ) {
   this.scrambler.scramble();
   notifyNativePlay( 'scramble' );
   this.controls.scrambleCube();
+  this.announce( `${ this.cube.size } by ${ this.cube.size } cube, scrambled. The timer starts on your first turn.` );
   const duration = this.scrambler.converted.length * ( this.controls.flipSpeeds[0] + 10 );
   if ( onComplete ) setTimeout( onComplete, duration );
   return duration;
@@ -5378,6 +5443,7 @@ Game.prototype.promptInitials = function( qualifiers, onSaved ) {
 
   overlay.classList.add( 'is-open' );
   overlay.setAttribute( 'aria-hidden', 'false' );
+  overlay.inert = false;
   setTimeout( () => { try { input.focus(); input.select(); } catch ( e ) {} }, 60 );
 
   const submit = event => {
@@ -5389,6 +5455,7 @@ Game.prototype.promptInitials = function( qualifiers, onSaved ) {
     form.onsubmit = null;
     overlay.classList.remove( 'is-open' );
     overlay.setAttribute( 'aria-hidden', 'true' );
+    overlay.inert = true;
     onSaved();
   };
 
