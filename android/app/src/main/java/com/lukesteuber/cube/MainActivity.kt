@@ -17,6 +17,8 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
@@ -121,11 +123,34 @@ class MainActivity : Activity() {
         navigateBackOrFinish()
     }
 
+    /**
+     * Back closes whatever the game has open on top (license notices, then Best
+     * Times) before it leaves the app. The game answers "true" when it closed
+     * something. If the page cannot answer in time, Back leaves as it always did.
+     */
     private fun navigateBackOrFinish() {
-        if (::webView.isInitialized && webView.canGoBack()) {
-            webView.goBack()
-        } else {
+        if (!::webView.isInitialized) {
             finish()
+            return
+        }
+        var answered = false
+        val leave = Runnable {
+            if (!answered) {
+                answered = true
+                if (webView.canGoBack()) webView.goBack() else finish()
+            }
+        }
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed(leave, BACK_ANSWER_TIMEOUT_MS)
+        webView.evaluateJavascript(BACK_SCRIPT) { result ->
+            if (answered) return@evaluateJavascript
+            if (result == "true") {
+                answered = true
+                handler.removeCallbacks(leave)
+            } else {
+                handler.removeCallbacks(leave)
+                leave.run()
+            }
         }
     }
 
@@ -212,5 +237,9 @@ class MainActivity : Activity() {
 
     private companion object {
         const val START_URL = "file:///android_asset/index.html"
+        const val BACK_ANSWER_TIMEOUT_MS = 700L
+        const val BACK_SCRIPT =
+            "(function(){try{return !!(window.game&&window.game.handleBack&&window.game.handleBack())}" +
+                "catch(e){return false}})()"
     }
 }

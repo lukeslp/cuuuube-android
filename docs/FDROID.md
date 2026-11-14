@@ -29,7 +29,10 @@ There is no native code, no Google Play Services, Firebase, ads or analytics.
 | Kotlin stdlib, JetBrains annotations | Official Maven artifacts, see above | `Apache-2.0.txt`, `Kotlin-ThreeTenBP-BSD-3-Clause.txt`, `Kotlin-Boost-1.0.txt`, `Kotlin-and-Annotations-Credits.txt` |
 
 Every notice's source URL and SHA-256 is in `docs/FDROID_NOTICE_SOURCES.json`,
-and the verifier checks the APK copy against that hash. A JVM test checks the
+and the verifier checks the APK copy against that hash. Since 1.0.7 the Licenses
+button on the Best Times screen shows every notice in full
+(`web/licenses/index.html`, written by `fdroid/build-licenses-page.py`; a JVM
+test fails if the page and the text files disagree). A JVM test checks the
 embedded Space Grotesk bytes against the pinned upstream hash and rejects any
 remote URL in the stylesheet.
 

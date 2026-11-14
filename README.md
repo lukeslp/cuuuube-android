@@ -47,5 +47,5 @@ that signed file, so copies from any of these sources update each other.
 - Space Grotesk 2.0.0 and Bungee: SIL Open Font License 1.1.
 - Feather icons and three-rounded-box geometry: MIT.
 
-Full texts ship inside the app under `web/licenses/`. `docs/FDROID.md` records
-the provenance review.
+Full texts ship inside the app under `web/licenses/`, and the Licenses button on
+the Best Times screen shows them. `docs/FDROID.md` records the provenance review.

@@ -262,6 +262,9 @@ body::before {
 /* ---- Scoreboard overlay (repurposed .ui__stats) ---- */
 .ui__stats {
   z-index: 6;
+  /* Hidden until the game opens it. Without this the board showed, unscaled,
+     for the moment before the script started (longer on a slow first launch). */
+  opacity: 0;
   justify-content: center;
   align-items: center;
   padding: 0;
@@ -310,7 +313,7 @@ body::before {
   font-size: 0.85em;
   padding: 0.15em 0;
 }
-.sb-row .sb-rank { color: rgba(0, 0, 0, 0.4); }
+.sb-row .sb-rank { color: rgba(0, 0, 0, 0.62); }
 .sb-row .sb-name {
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -320,7 +323,7 @@ body::before {
 }
 .sb-row .sb-time { font-variant-numeric: tabular-nums; }
 .sb-row.is-new { color: #E60000; font-weight: 700; }
-.sb-empty { color: rgba(0, 0, 0, 0.35); font-size: 0.8em; font-style: italic; }
+.sb-empty { color: rgba(0, 0, 0, 0.62); font-size: 0.8em; font-style: italic; }
 .scoreboard-close {
   -webkit-appearance: none;
   appearance: none;
@@ -337,6 +340,67 @@ body::before {
   cursor: pointer;
 }
 .scoreboard-close:hover { background: rgba(0, 0, 0, 0.12); }
+.scoreboard-licenses {
+  -webkit-appearance: none;
+  appearance: none;
+  align-self: center;
+  margin-top: 0.5em;
+  padding: 0.9em 1.5em;
+  border: 0;
+  background: none;
+  color: rgba(0, 0, 0, 0.6);
+  font: inherit;
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Spoken status for screen readers: scrambles, solves, theme changes. */
+.sr-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  text-transform: none;
+}
+
+/* ---- License notices (opened from the scoreboard) ---- */
+.ui__licenses {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f7;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.ui__licenses.is-open { opacity: 1; pointer-events: all; }
+.licenses-panel {
+  width: min(94vw, 44em);
+  height: 90vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+.licenses-page {
+  flex: 1 1 auto;
+  min-height: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+}
+.licenses-page iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.licenses-close { margin-top: 0.75em; }
 
 /* ---- Initials entry modal ---- */
 .ui__initials {
@@ -345,7 +409,9 @@ body::before {
   z-index: 8;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* Sits in the upper half so the on-screen keyboard does not cover Save. */
+  align-items: flex-start;
+  padding-top: 12vh;
   background: rgba(245, 245, 247, 0.92);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
@@ -415,7 +481,8 @@ body::before {
 }
 .text--title {
   bottom: 75%;
-  font-size: 4.4em;
+  /* Seven letters: capped by width so the name is never cut at the edges. */
+  font-size: min(4.4em, 18.5vw);
   height: 1.2em;
 }
 .text--title span {

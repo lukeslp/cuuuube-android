@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,viewport-fit=cover">
     <meta name="description" content="*taps cube*">
     <!-- Fonts use the local system stack (Helvetica Neue / Inter fallbacks in style.css) for fully offline play. -->
-    <link rel="stylesheet" href="./style.css?v=elegance-5">
+    <link rel="stylesheet" href="./style.css?v=elegance-7">
   </head>
     
   <body>
@@ -16,23 +16,23 @@
 
   <div class="ui__background"></div>
 
-  <div class="ui__game"></div>
+  <div class="ui__game" role="img" aria-label="The cube. Drag across it to turn a layer. Drag beside it to turn the whole cube."></div>
 
   <div class="ui__texts">
-    <h1 class="text text--title">
+    <h1 class="text text--title" aria-label="CUUUUBE">
       <span>THE</span>
-      <span>CUBE</span>
+      <span>CUUUUBE</span>
     </h1>
-    <div class="text text--note">
-      tap to begin
+    <div class="text text--note" aria-hidden="true">
+      double tap to begin
     </div>
-    <div class="text text--timer">
+    <div class="text text--timer" role="timer" aria-label="0:00">
       0:00
     </div>
-    <div class="text text--complete">
+    <div class="text text--complete" aria-hidden="true">
       <span>Complete!</span>
     </div>
-    <div class="text text--best-time">
+    <div class="text text--best-time" aria-hidden="true">
       <span>Best Time!</span>
     </div>
     <div class="text text--level">
@@ -79,15 +79,23 @@
   </div>
 
 
-  <div class="ui__stats" role="dialog" aria-label="Best times scoreboard" aria-hidden="true">
+  <div class="ui__stats" role="dialog" aria-modal="true" aria-label="Best times" aria-hidden="true" inert>
     <div class="scoreboard">
       <div class="scoreboard-title">Best Times</div>
       <div class="scoreboard-boards"></div>
       <button class="scoreboard-close" type="button">Close</button>
+      <button class="scoreboard-licenses" type="button">Licenses</button>
     </div>
   </div>
 
-  <div class="ui__initials" aria-hidden="true">
+  <div class="ui__licenses" role="dialog" aria-modal="true" aria-label="CUUUUBE license notices" aria-hidden="true" inert>
+    <div class="licenses-panel">
+      <div class="licenses-page"></div>
+      <button class="scoreboard-close licenses-close" type="button">Close</button>
+    </div>
+  </div>
+
+  <div class="ui__initials" aria-hidden="true" inert>
     <div class="initials-card" role="dialog" aria-modal="true" aria-labelledby="initials-title">
       <div class="initials-title" id="initials-title">New best time!</div>
       <div class="initials-sub"></div>
@@ -99,6 +107,8 @@
     </div>
   </div>
 
+  <div class="sr-status" role="status" aria-live="polite"></div>
+
   <div class="ui__buttons">
     <a href="https://lukesteuber.com" class="btn btn--tl btn--home" aria-label="Home">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -106,7 +116,7 @@
         <polyline points="9 22 9 12 15 12 15 22"/>
       </svg>
     </a>
-    <button class="btn btn--tr btn--stats" aria-label="View statistics">
+    <button class="btn btn--tr btn--stats" aria-label="Best times">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <rect x="3" y="12" width="4" height="9"/>
         <rect x="10" y="8" width="4" height="13"/>
@@ -118,7 +128,7 @@
 </div>
 
 <script src="./vendor/three.min.js"></script>
-<script src="./script.js?v=14"></script>
+<script src="./script.js?v=16"></script>
   </body>
   
 </html>

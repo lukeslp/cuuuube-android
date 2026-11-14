@@ -7,7 +7,7 @@ WebSite: https://dr.eamer.dev/downloads/apps/cuuuube/
 SourceCode: https://github.com/lukeslp/cuuuube-android
 IssueTracker: https://github.com/lukeslp/cuuuube-android/issues
 
-AutoName: Cube
+AutoName: CUUUUBE
 
 RepoType: git
 Repo: https://github.com/lukeslp/cuuuube-android.git
@@ -16,6 +16,13 @@ Binaries: https://github.com/lukeslp/cuuuube-android/releases/download/v%v/cuuuu
 Builds:
   - versionName: 1.0.6
     versionCode: 6
+    commit: 86dff1350e83584ef97780eb17e544176c3e1b0f
+    subdir: android/app
+    gradle:
+      - yes
+
+  - versionName: 1.0.7
+    versionCode: 7
     commit: EXPORT_COMMIT
     subdir: android/app
     gradle:
@@ -27,5 +34,5 @@ AutoUpdateMode: Version
 UpdateCheckMode: Tags ^v[0-9.]+$
 UpdateCheckData: 
   android/version.properties|VERSION_CODE=(\d+)|android/version.properties|VERSION_NAME=(.+)
-CurrentVersion: 1.0.6
-CurrentVersionCode: 6
+CurrentVersion: 1.0.7
+CurrentVersionCode: 7
